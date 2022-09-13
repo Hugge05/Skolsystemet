@@ -11,7 +11,10 @@ public:
 
 	void AddStudent(std::string name, int age);
 	void RemoveStudent();
+	void AddClass(std::string ClassName);
+	void InfoStudent(std::string name, int age, std::string Class);
 
 	std::vector<Student> students;
 	std::vector<std::string> schoolClasses;
+	
 };
