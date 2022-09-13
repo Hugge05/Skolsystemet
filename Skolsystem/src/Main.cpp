@@ -1,7 +1,7 @@
-
+#include "Schoolsystem.h"
 
 int main()
 {
-	Schoolsystem system;
+	SchoolSystem system;
 	system.Run();
 }

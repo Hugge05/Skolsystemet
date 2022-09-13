@@ -9,7 +9,7 @@ public:
 	void Run();
 
 
-	void AddStudent(std::string name);
+	void AddStudent(std::string name, int age);
 	void RemoveStudent();
 
 	std::vector<Student> students;
