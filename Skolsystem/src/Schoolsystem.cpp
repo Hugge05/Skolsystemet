@@ -15,13 +15,13 @@ void SchoolSystem::Run()
 		std::cin >> input;
 		std::string name = "";
 		int age{};
-
+		std::string SchoolClass = "";
 		std::string classname = "";
 		switch (input)
 		{
 		case 1:
 			std::cin.get();
-			AddStudent (name, age);
+			AddStudent (name, age, SchoolClass);
 			
 			break;
 
@@ -34,7 +34,16 @@ void SchoolSystem::Run()
 		case 3:
 			std::cin.get();
 			AddClass(classname);
+			break;
+
+		case 4:
+			return;
+			break;
+
+
+
 		}
+		
 		
 		
 
@@ -42,7 +51,7 @@ void SchoolSystem::Run()
 	}
 }
 
-void SchoolSystem::AddStudent(std::string name, int age)
+void SchoolSystem::AddStudent(std::string name, int age, std::string SchoolClass)
 {
 	Student student;
 
@@ -52,6 +61,9 @@ void SchoolSystem::AddStudent(std::string name, int age)
 	std::getline(std::cin, name);
 	std::cout << "Skriv in elevens ålder" << "\n";
 	std::cin >> age;
+	std::cout << "What Class do you want to add " + name + " to?";
+	std::cin >> SchoolClass;
+
 
 
 
@@ -64,6 +76,9 @@ void SchoolSystem::AddStudent(std::string name, int age)
 
 void SchoolSystem::RemoveStudent()
 {
+	{
+
+	}
 
 }
 
@@ -82,8 +97,9 @@ void SchoolSystem::AddClass(std::string ClassName)
 				
 			}
 			else schoolClasses.push_back(ClassName);
-		}
-		
+					}
+		std::cout << "You have added the class: " + ClassName + " You can now add students to the Class!" << "\n";
+
       
 }
 

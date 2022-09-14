@@ -4,4 +4,5 @@ int main()
 {
 	SchoolSystem system;
 	system.Run();
+
 }

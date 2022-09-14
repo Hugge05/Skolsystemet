@@ -9,7 +9,7 @@ public:
 	void Run();
 
 
-	void AddStudent(std::string name, int age);
+	void AddStudent(std::string name, int age, std::string SchoolClass);
 	void RemoveStudent();
 	void AddClass(std::string ClassName);
 	void InfoStudent(std::string name, int age, std::string Class);
