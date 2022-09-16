@@ -64,7 +64,13 @@ void SchoolSystem::AddStudent(std::string name, int age, std::string SchoolClass
 	std::cout << "What Class do you want to add " + name + " to?";
 	std::cin >> SchoolClass;
 
+	for (auto j : schoolClasses)
+	{
+		if (SchoolClass == j)
+		{
 
+		}
+	}
 
 
 
@@ -76,9 +82,18 @@ void SchoolSystem::AddStudent(std::string name, int age, std::string SchoolClass
 
 void SchoolSystem::RemoveStudent()
 {
-	{
-
-	}
+	std::string deleteStudent = "";
+		std::cout << "Which Student do you want to remove? " << "\n";
+		std::cin >> deleteStudent;
+		for (auto i : students)
+		{
+			if (deleteStudent == i.name)
+			{
+				
+				
+			}
+		}
+	
 
 }
 
