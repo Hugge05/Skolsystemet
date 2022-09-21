@@ -5,11 +5,11 @@ void SchoolSystem::Run()
 	while (true)
 	{
 		std::cout << "Välkommen till detta SkolSystem!, välj vad du vill göra!" << "\n";
-		std::cout << "1. Lägg till en elev" << "\n";
-		std::cout << "2. Ta bort elev" << "\n";
-		std::cout << "3. Skapa en klass" << "\n";
-		std::cout << "3. Flytta Student" << "\n";
-		std::cout << "4. Avsluta Programmet" << "\n";
+		std::cout << "1.Add a student to the class" << "\n";
+		std::cout << "2. Remove a student" << "\n";
+		std::cout << "3. Create a School Class" << "\n";
+		std::cout << "3. Move a student" << "\n";
+		std::cout << "4. Exit the program" << "\n";
 	    
 		int input;
 		std::cin >> input;
@@ -21,7 +21,7 @@ void SchoolSystem::Run()
 		{
 		case 1:
 			std::cin.get();
-			AddStudent (name, age, SchoolClass);
+			AddStudent ();
 			
 			break;
 
@@ -33,7 +33,7 @@ void SchoolSystem::Run()
 
 		case 3:
 			std::cin.get();
-			AddClass(classname);
+			AddClass();
 			break;
 
 		case 4:
@@ -51,33 +51,39 @@ void SchoolSystem::Run()
 	}
 }
 
-void SchoolSystem::AddStudent(std::string name, int age, std::string SchoolClass)
+void SchoolSystem::AddStudent( )
 {
+	std::string SchoolClass = "";
 	Student student;
-
+	int age;
+	std::string name = "";
 	student.name = name;
-
-	std::cout << "Skriv in elevens namn" << "\n";
+	std::string schoolClass = "";
+	std::cout << "Write the student's name" << "\n";
 	std::getline(std::cin, name);
-	std::cout << "Skriv in elevens ålder" << "\n";
+	std::cout << "Write the student's age" << "\n";
 	std::cin >> age;
-	std::cout << "What Class do you want to add " + name + " to?";
+	std::cout << "What Class do you want to add " + name + " to?" << "\n";
 	std::cin >> SchoolClass;
-
-	for (auto j : schoolClasses)
+ for (auto& classes : schoolClasses)
 	{
-		if (SchoolClass == j)
-		{
-
-		}
+		if (classes != SchoolClass) return;
 	}
 
+	for (auto& student : students)
+	{
+		if (student.name == name)
+		{
+			student.SchoolClass = SchoolClass;
+			std::cout << "You have added " + name + " to the Class " + SchoolClass << "\n";
+		}
 
 
 
-	
-	student.age = age;
-	students.push_back(student);
+
+		student.age = age;
+		students.push_back(student);
+	}
 }
 
 void SchoolSystem::RemoveStudent()
@@ -97,11 +103,11 @@ void SchoolSystem::RemoveStudent()
 
 }
 
-void SchoolSystem::AddClass(std::string ClassName)
+void SchoolSystem::AddClass()
 {
 
-
-	std::cout << "Vad ska klassen heta ? " << "\n";
+	std::string ClassName = "";
+	std::cout << "What is the name of the School Class? " << "\n";
 	std::getline(std::cin, ClassName);
 		for (auto i : schoolClasses)
 		{
@@ -112,13 +118,18 @@ void SchoolSystem::AddClass(std::string ClassName)
 				
 			}
 			else schoolClasses.push_back(ClassName);
-					}
+		}
 		std::cout << "You have added the class: " + ClassName + " You can now add students to the Class!" << "\n";
 
       
 }
 
 void SchoolSystem::InfoStudent(std::string name, int age, std::string Class)
+{
+
+}
+
+void SchoolSystem::infoClass(int students)
 {
 
 }

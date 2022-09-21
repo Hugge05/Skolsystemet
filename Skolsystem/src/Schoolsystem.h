@@ -9,10 +9,11 @@ public:
 	void Run();
 
 
-	void AddStudent(std::string name, int age, std::string SchoolClass);
+	void AddStudent();
 	void RemoveStudent();
-	void AddClass(std::string ClassName);
+	void AddClass();
 	void InfoStudent(std::string name, int age, std::string Class);
+	void infoClass(int students);
 
 	std::vector<Student> students;
 	std::vector<std::string> schoolClasses;
