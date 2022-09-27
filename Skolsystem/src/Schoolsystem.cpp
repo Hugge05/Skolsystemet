@@ -4,13 +4,16 @@ void SchoolSystem::Run()
 {
 	while (true)
 	{
-		std::cout << "Välkommen till detta SkolSystem!, välj vad du vill göra!" << "\n";
+		// Start meny
+		std::cout << "Welcome to the SchoolSystem Navigate via the numbers!" << "\n";
 		std::cout << "1.Add a student to the class" << "\n";
 		std::cout << "2. Remove a student" << "\n";
-		std::cout << "3. Create a School Class" << "\n";
-		std::cout << "3. Move a student" << "\n";
-		std::cout << "4. Exit the program" << "\n";
-	    
+		std::cout << "3. Add a student to a class" << "\n";
+		std::cout << "4. Create a School Class" << "\n";
+		std::cout << "5. Information about students." << "\n";
+		std::cout << "5. Move a student" << "\n";
+		std::cout << "6. Exit the program" << "\n";
+	    // Tar input för menyn
 		int input;
 		std::cin >> input;
 		std::string name = "";
@@ -31,12 +34,26 @@ void SchoolSystem::Run()
 
 			break;
 
-		case 3:
+		case 3: 
+
+			std::cin.get();
+			AddStudentToClass();
+			break;
+
+			
+		case 4:
 			std::cin.get();
 			AddClass();
 			break;
+		case 5: 
+			std::cin.get();
+			InfoStudent();
+			break;
 
-		case 4:
+
+
+
+		case 6:
 			return;
 			break;
 
@@ -51,32 +68,25 @@ void SchoolSystem::Run()
 	}
 }
 
-void SchoolSystem::AddStudent( )
+void SchoolSystem::AddStudent()
 {
+	// Registrera en elev
 	std::string SchoolClass = "";
 	Student student;
 	int age;
 	std::string name = "";
-	student.name = name;
+	
 	std::string schoolClass = "";
 	std::cout << "Write the student's name" << "\n";
 	std::getline(std::cin, name);
+	student.name = name;
+	
 	std::cout << "Write the student's age" << "\n";
 	std::cin >> age;
-	std::cout << "What Class do you want to add " + name + " to?" << "\n";
-	std::cin >> SchoolClass;
- for (auto& classes : schoolClasses)
-	{
-		if (classes != SchoolClass) return;
-	}
+	std::cout << "You have registered " + name  << "\n";
+	
 
-	for (auto& student : students)
-	{
-		if (student.name == name)
-		{
-			student.SchoolClass = SchoolClass;
-			std::cout << "You have added " + name + " to the Class " + SchoolClass << "\n";
-		}
+
 
 
 
@@ -84,10 +94,11 @@ void SchoolSystem::AddStudent( )
 		student.age = age;
 		students.push_back(student);
 	}
-}
+
 
 void SchoolSystem::RemoveStudent()
 {
+	// Ta bort en elev från klassen
 	std::string deleteStudent = "";
 		std::cout << "Which Student do you want to remove? " << "\n";
 		std::cin >> deleteStudent;
@@ -105,7 +116,7 @@ void SchoolSystem::RemoveStudent()
 
 void SchoolSystem::AddClass()
 {
-
+	// Skapa en SkolKlass
 	std::string ClassName = "";
 	std::cout << "What is the name of the School Class? " << "\n";
 	std::getline(std::cin, ClassName);
@@ -124,12 +135,68 @@ void SchoolSystem::AddClass()
       
 }
 
-void SchoolSystem::InfoStudent(std::string name, int age, std::string Class)
+void SchoolSystem::InfoStudent()
 {
-
+	
+	
+	
+	std::cout << "Which student are you looking for ?" << "\n";
+std::string name = "";
+	std::cin >> name;
+	std::cout << "print 1" << "\n";
+	for (auto i : students)
+	{
+		std::cout << "print 2 " << "\n";
+		if (i.name == name)
+		{
+			
+			std::cout << "Student name: " + i.name << "\n";
+			std::cout << "Print 3 " << "\n";
+			std::cout << "Students age: " + i.age << "\n";
+			std::cout << "Class: " + i.SchoolClass << "\n";
+			break;
+			
+		}
+		
+		else if (i.name != name)
+		{
+			std::cout << "print 5" << "\n";
+			std::cout << "This student does not exist." << "\n";
+		
+		}
+	}
 }
 
 void SchoolSystem::infoClass(int students)
 {
 
+}
+
+void SchoolSystem::AddStudentToClass()
+{
+	// Lägga till elev i en skolklass
+std::string name = "";
+	std::string SchoolClass = "";
+	std::cout << "Who do you want to add to the Class?" << "\n";
+	std::cin >> name;
+	
+	std::cout << "What schoolClass do you want to add a student to?" << "\n";
+	std::cin >> SchoolClass;
+	for (auto classes : schoolClasses)
+	{
+		if (classes != SchoolClass)
+			std::cout << "This Class does not exist." << "\n";
+		break;
+	}
+
+	for (auto& student : students)
+	{
+		if (student.name == name)
+		{
+			student.SchoolClass = SchoolClass;
+			std::cout << "You have added " + name + " to the Class " + SchoolClass << "\n";
+			return;
+
+		}
+	}
 }

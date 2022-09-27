@@ -2,6 +2,9 @@
 #include "Student.h"
 #include <vector>
 #include <iostream>
+#include "SchoolClasses.h"
+
+
 
 class SchoolSystem
 {
@@ -12,8 +15,9 @@ public:
 	void AddStudent();
 	void RemoveStudent();
 	void AddClass();
-	void InfoStudent(std::string name, int age, std::string Class);
+	void InfoStudent();
 	void infoClass(int students);
+	void AddStudentToClass();
 
 	std::vector<Student> students;
 	std::vector<std::string> schoolClasses;

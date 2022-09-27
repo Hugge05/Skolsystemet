@@ -131,6 +131,7 @@
     <ClCompile Include="src\Schoolsystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\SchoolClasses.h" />
     <ClInclude Include="src\Schoolsystem.h" />
     <ClInclude Include="src\Student.h" />
   </ItemGroup>
