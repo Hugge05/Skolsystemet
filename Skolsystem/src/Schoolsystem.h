@@ -13,7 +13,7 @@ public:
 
 
 	void AddStudent();
-	void RemoveStudent();
+	void RemoveStudentFromClass();
 	void AddClass();
 	void InfoStudent();
 	void infoClass(int students);

@@ -30,7 +30,7 @@ void SchoolSystem::Run()
 
 		case 2:
 			std::cin.get();
-			RemoveStudent();
+			RemoveStudentFromClass();
 
 			break;
 
@@ -96,18 +96,29 @@ void SchoolSystem::AddStudent()
 	}
 
 
-void SchoolSystem::RemoveStudent()
+void SchoolSystem::RemoveStudentFromClass()
 {
+	std::string name = "";
+	int age = 0;
+
 	// Ta bort en elev från klassen
-	std::string deleteStudent = "";
+	
 		std::cout << "Which Student do you want to remove? " << "\n";
-		std::cin >> deleteStudent;
-		for (auto i : students)
+		
+		std::cin >> name;
+		for (auto& i : students)
 		{
-			if (deleteStudent == i.name)
+			if (i.name == name)
 			{
 				
-				
+				if (i.SchoolClass == "")
+				{
+					std::cout << name << " Doesn't have a class " << "\n";
+					return;
+				}
+				std::cout << name << " was removed from " << i.SchoolClass << "\n";
+				i.SchoolClass = "";
+				return;
 			}
 		}
 	
@@ -134,52 +145,14 @@ void SchoolSystem::AddClass()
 
       
 }
-
-void SchoolSystem::InfoStudent()
-{
-	
-	
-	
-	std::cout << "Which student are you looking for ?" << "\n";
-std::string name = "";
-	std::cin >> name;
-	std::cout << "print 1" << "\n";
-	for (auto i : students)
-	{
-		std::cout << "print 2 " << "\n";
-		if (i.name == name)
-		{
-			
-			std::cout << "Student name: " + i.name << "\n";
-			std::cout << "Print 3 " << "\n";
-			std::cout << "Students age: " + i.age << "\n";
-			std::cout << "Class: " + i.SchoolClass << "\n";
-			break;
-			
-		}
-		
-		else if (i.name != name)
-		{
-			std::cout << "print 5" << "\n";
-			std::cout << "This student does not exist." << "\n";
-		
-		}
-	}
-}
-
-void SchoolSystem::infoClass(int students)
-{
-
-}
-
 void SchoolSystem::AddStudentToClass()
 {
 	// Lägga till elev i en skolklass
-std::string name = "";
+	std::string name = "";
 	std::string SchoolClass = "";
 	std::cout << "Who do you want to add to the Class?" << "\n";
 	std::cin >> name;
-	
+
 	std::cout << "What schoolClass do you want to add a student to?" << "\n";
 	std::cin >> SchoolClass;
 	for (auto classes : schoolClasses)
@@ -200,3 +173,42 @@ std::string name = "";
 		}
 	}
 }
+void SchoolSystem::InfoStudent()
+{
+	
+	
+	
+	std::cout << "Which student are you looking for ?" << "\n";
+std::string name = "";
+	std::cin >> name;
+	std::cout << "print 1" << "\n";
+	for (auto& i : students)
+	{
+		std::cout << "print 2 " << "\n";
+		if (i.name == name)
+		{
+			if (i.name != name)
+			{
+				std::cout << "print 5" << "\n";
+				std::cout << "This student does not exist." << "\n";
+
+			}
+			std::cout << "Student name: " + i.name << "\n";
+			std::cout << "Print 3 " << "\n";
+			std::cout << "Students age: " + i.age << "\n";
+			std::cout << "Class: " + i.SchoolClass << "\n";
+			return;
+			
+		}
+		
+		 
+	     
+	}
+}
+
+void SchoolSystem::infoClass(int students)
+{
+
+}
+
+
