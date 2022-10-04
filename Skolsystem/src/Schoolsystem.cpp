@@ -7,12 +7,12 @@ void SchoolSystem::Run()
 		// Start meny
 		std::cout << "Welcome to the SchoolSystem Navigate via the numbers!" << "\n";
 		std::cout << "1.Add a student to the class" << "\n";
-		std::cout << "2. Remove a student" << "\n";
-		std::cout << "3. Add a student to a class" << "\n";
-		std::cout << "4. Create a School Class" << "\n";
-		std::cout << "5. Information about students." << "\n";
-		std::cout << "5. Move a student" << "\n";
-		std::cout << "6. Exit the program" << "\n";
+		std::cout << "2. Remove a student from a class" << "\n";
+		std::cout << "3. Remove a student from the system" << "\n";
+		std::cout << "4. Add a student to a class" << "\n";
+		std::cout << "5. Create a School Class" << "\n";
+		std::cout << "6. Information about students." << "\n";
+		std::cout << "7. Exit the program" << "\n";
 	    // Tar input för menyn
 		int input;
 		std::cin >> input;
@@ -33,19 +33,24 @@ void SchoolSystem::Run()
 			RemoveStudentFromClass();
 
 			break;
+		case 3:
+			std::cin.get();
+			RemoveStudent();
 
-		case 3: 
+			break;
+
+		case 4: 
 
 			std::cin.get();
 			AddStudentToClass();
 			break;
 
 			
-		case 4:
+		case 5:
 			std::cin.get();
 			AddClass();
 			break;
-		case 5: 
+		case 6: 
 			std::cin.get();
 			InfoStudent();
 			break;
@@ -53,7 +58,7 @@ void SchoolSystem::Run()
 
 
 
-		case 6:
+		case 7:
 			return;
 			break;
 
@@ -125,6 +130,22 @@ void SchoolSystem::RemoveStudentFromClass()
 
 }
 
+void SchoolSystem::RemoveStudent()
+{
+	std::cout << "Which student do you want to remove from the system?" << "\n";
+	std::string name = "";
+	std::cin >> name;
+
+		for (auto& i : students)
+		{
+			if (name == i.name)
+			{
+				i.name = "[Removed]";
+			}
+		}
+
+}
+
 void SchoolSystem::AddClass()
 {
 	// Skapa en SkolKlass
@@ -181,27 +202,29 @@ void SchoolSystem::InfoStudent()
 	std::cout << "Which student are you looking for ?" << "\n";
 std::string name = "";
 	std::cin >> name;
-	std::cout << "print 1" << "\n";
+	
 	for (auto& i : students)
 	{
-		std::cout << "print 2 " << "\n";
+		
 		if (i.name == name)
 		{
-			if (i.name != name)
-			{
-				std::cout << "print 5" << "\n";
-				std::cout << "This student does not exist." << "\n";
-
-			}
-			std::cout << "Student name: " + i.name << "\n";
-			std::cout << "Print 3 " << "\n";
-			std::cout << "Students age: " + i.age << "\n";
-			std::cout << "Class: " + i.SchoolClass << "\n";
-			return;
 			
+			std::cout << "Student name: " + i.name << "\n";
+	        std::cout << "Students age: " + i.age << "\n";
+			std::cout << "Class: " + i.SchoolClass << "\n";
+			break;
+			
+		} 
+		else if (i.name != name)
+		{
+			std::cout << "This student does not exist." << "\n";
 		}
 		
-		 
+		
+
+			
+		
+
 	     
 	}
 }
