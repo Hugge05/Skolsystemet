@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
+#include <iostream>
 
-struct ScoolClass 
+struct SchoolClass
 {
-
-	int students = 0;
 	std::string ClassName = "";
 
-
 };
+
+
